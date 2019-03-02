@@ -1,0 +1,9 @@
+#!/bin/bash
+/opt/gitlab/embedded/bin/runsvdir-start &
+if [ $? -ne 0 ]; then
+    echo "fail"
+    exit 2
+else
+    echo "success"
+    exit 1
+fi
