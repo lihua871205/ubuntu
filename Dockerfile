@@ -6,5 +6,5 @@ RUN curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/sc
 RUN apt-get install -y gitlab-ce=7.14.3-ce.0
 RUN sed -i 's/^ulimit -i 62793/#ulimit -i 62793/g' /opt/gitlab/embedded/bin/runsvdir-start
 RUN sed -i 's/^echo "1000000" > \/proc\/sys\/fs\/file-max/#echo "1000000" > \/proc\/sys\/fs\/file-max/g' /opt/gitlab/embedded/bin/runsvdir-start
-RUN sed -i "s/^external_url.*/external_url 'http:127.0.0.1:8086'/g" /etc/gitlab/gitlab.rb
+RUN sed -i "s/^external_url.*/external_url 'http://127.0.0.1:8086'/g" /etc/gitlab/gitlab.rb
 CMD ["bash", "-c", "/opt/gitlab/embedded/bin/runsvdir-start \& && gitlab-ctl reconfigure"]
