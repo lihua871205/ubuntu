@@ -3,6 +3,7 @@ RUN apt-get update
 RUN apt-get install -y curl
 RUN apt-get install -y vim
 RUN apt-get install -y git
+RUN apt-get install -y ssh
 RUN curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
 RUN apt-get install -y gitlab-ce=7.14.3-ce.0
 RUN sed -i 's/^ulimit -i 62793/#ulimit -i 62793/g' /opt/gitlab/embedded/bin/runsvdir-start
