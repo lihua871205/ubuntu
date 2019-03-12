@@ -12,4 +12,4 @@ RUN sed -i "s/^external_url.*/external_url 'http:\/\/100.95.140.32:8086'/g" /etc
 RUN sed -i "s/.*gitlab_shell_ssh_port.*/gitlab_rails['gitlab_shell_ssh_port'] = 2222/g" /etc/gitlab/gitlab.rb
 COPY ./runmaster /opt/gitlab/embedded/bin/
 RUN chmod 766 /opt/gitlab/embedded/bin/runmaster
-CMD ["bash", "-c", "/opt/gitlab/embedded/bin/runmaster && gitlab-ctl reconfigure && tailf /var/log/gitlab/gitlab-rails/application.log"]
+CMD ["bash", "-c", "/etc/init.d/ssh start && /opt/gitlab/embedded/bin/runmaster && gitlab-ctl reconfigure && tailf /var/log/gitlab/gitlab-rails/application.log"]
